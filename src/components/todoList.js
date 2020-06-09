@@ -38,7 +38,7 @@ const todoListStatsState = selector({
 function TodoList() {
   const todoList = useRecoilValue(filteredTodoListState);
 
-  // @TODO - add state persistance - new Recoil API coming soon
+  // @TODO - add state persistence - new Recoil API coming soon
   // https://recoil.docschina.org/docs/guides/persistence/
 
   return (
