@@ -2,7 +2,7 @@
 
 Simple Todo list using React and Recoil. 
 
-(https://nervous-ardinghelli-87c071.netlify.app/)[Demo].
+[Demo](https://nervous-ardinghelli-87c071.netlify.app/).
 
 ### TODO
 
