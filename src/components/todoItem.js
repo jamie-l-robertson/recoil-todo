@@ -19,7 +19,7 @@ const TodoItem = ({ item }) => {
   const toggleItemCompletion = () => {
     const newList = replaceItemAtIndex(todoList, index, {
       ...item,
-      isComplete: !item.complete,
+      isComplete: !item.isComplete,
     });
 
     setTodoList(newList);
@@ -29,6 +29,8 @@ const TodoItem = ({ item }) => {
     const newList = removeItemAtIndex(todoList, index);
     setTodoList(newList);
   };
+
+
 
 
   return (

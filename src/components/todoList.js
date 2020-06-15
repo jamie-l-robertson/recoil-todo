@@ -4,11 +4,12 @@ import TodoListFilters from './todoListFilter';
 import TodoListStats from './todoListStats';
 import TodoItem from './todoItem.js'
 
-let id = 0;
-
 const todoListState = atom({
   key: 'todoListState',
   default: [],
+  persistence_UNSTABLE: { // new method coming, keep watch
+    type: 'todoListState'
+  }
 });
 
 const todoListFilterState = atom({
@@ -55,21 +56,15 @@ const filteredTodoListState = selector({
 function TodoList() {
   const todoList = useRecoilValue(filteredTodoListState);
 
-  // @TODO - add state persistence - new Recoil API coming soon
-  // https://recoil.docschina.org/docs/guides/persistence/
-
   return (
     <>
       <TodoListFilters />
       <TodoItemCreator />
 
       <h2>Items</h2>
-      {todoList.length > 0 ? todoList.map(todoItem =>
-        (
-          <TodoItem key={todoItem.id} item={todoItem} />
-        )
-      ) : <p>no items :(</p>}
-
+      {todoList.length > 0 ? todoList.map(todoItem => (
+        <TodoItem key={todoItem.id} item={todoItem} />
+      )) : <p>no items :(</p>}
 
       <TodoListStats />
     </>
@@ -115,7 +110,7 @@ function TodoItemCreator() {
 }
 
 function getId() {
-  return id++;
+  return `${Math.floor(Date.now() + Math.random())}}`;
 }
 
 export { TodoList, todoListState, todoListFilterState, todoListStatsState };
