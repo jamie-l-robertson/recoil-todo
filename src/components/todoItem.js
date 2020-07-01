@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { todoListState } from './todoList';
-
+import { ReactComponent as RemoveIcon } from '../icons/circle-minus.svg';
 
 const TodoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
@@ -30,18 +30,19 @@ const TodoItem = ({ item }) => {
     setTodoList(newList);
   };
 
-
-
-
   return (
     <div className="todo-item">
-      <input type="text" value={item.text} onChange={editItemText} />
-      <input
-        type="checkbox"
-        checked={item.isComplete}
-        onChange={toggleItemCompletion}
-      />
-      <button onClick={deleteItem}>X</button>
+      <input type="text" value={item.text} style={{ textDecoration: item.isComplete && 'line-through' }} onChange={editItemText} />
+      <div className="controls">
+        <input
+          type="checkbox"
+          checked={item.isComplete}
+          onChange={toggleItemCompletion}
+        />
+        <button onClick={deleteItem}>
+          <RemoveIcon />
+        </button>
+      </div>
     </div>
   )
 }

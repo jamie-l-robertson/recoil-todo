@@ -1,12 +1,18 @@
 body {
-  --body-colour: #2D4252; 
+  --body-colour: #E8E8E2; 
   --primary: rgb(182, 198, 73);
-  --text: #000;
+  --text: #5B6F82;
   --lightgray: #bdc1c6;
   --white: #fff;
   --green: #06842c;
-  --pad: 10px;
-  --marg: 10px;
+  --red: #CC0000;
+  --icon-color: var(--text);
+  --pad: 15px;
+  --pad-lrg: 25px;
+  --marg: 25px;
+  --radius: 5px;
+  --shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+
   margin: 0;
   font-family: "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -30,20 +36,23 @@ li {
 
 button {
   line-height: 22px;
-  padding: 0 8px 2px;
-  background: var(--body-colour);
+  padding: 10px;
   color: var(--primary);
   border: 2px solid var(--primary);
   font-size: 18px;
   font-weight: bold;
+  background-color: var(--primary);
   vertical-align: top;
   cursor: pointer;
 }
+
 input + button {
-  line-height: 30px;
-  background: var(--primary);
+  display: inline-block;
+  padding: 0;
+  background-color: transparent;
   color: var(--body-colour);
   border: none;
+  vertical-align: middle;
 }
 
 input[type="text"] {
@@ -51,8 +60,8 @@ input[type="text"] {
   border: none;
   width: 50%;
   line-height: 30px;
-  font-size: 18px;
-  padding-left: var(--pad);
+  font-size: 16px;
+  padding-left: 0;
   color: var(--text);
 }
 input[type="text"]:focus {
@@ -60,37 +69,24 @@ input[type="text"]:focus {
 }
 input[type="checkbox"] {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   margin: 0 10px;
   color: var(--primary);
-  border: 1px solid var(--lightgray);
+  border: 2px solid var(--lightgray);
   appearance: none;
   outline: 0;
   cursor: pointer;
   transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
-  vertical-align: bottom;
+  vertical-align: middle;
+  border-radius: 100%;
 }
 
-input[type="checkbox"]::before {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 14px;
-  margin-top: -3px;
-    border-style: solid;
-  border-color: var(--body-colour);
-  border-width: 0 2px 2px 0;
-  transform: translate(-50%, -50%) rotate(45deg);
-  opacity: 0;
-}
+
 input[type="checkbox"]:checked {
-  color: var(--white);
-  border-color: var(--primary);
-  background: var(--primary);
+  background: url("./icons/checkmark-circle.svg") no-repeat 0 0;
+  background-size: 20px 20px;
+  border: 0;
 }
 
 input[type="checkbox"]:checked::before {
@@ -131,34 +127,126 @@ h2, h3 {
   margin-bottom: var(--marg);
 }
 
+svg:not([class]) {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: var(--icon-color);
+  padding: 0;
+}
+
 .app {
-  max-width: 800px;
+  max-width: 600px;
+  min-width: 340px;
   margin: 30px auto;
+  padding: 0 var(--pad);
+}
+
+.panel {
+  padding:var(--pad-lrg);
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .filter {
-  padding-bottom: var(--pad);
-  margin-bottom: var(--marg);
-  border-bottom: 1px solid var(--lightgray);
+  justify-self: end;
+}
+
+.filter svg {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 8px;
+  fill: var(--text);
+  vertical-align: middle;
+}
+
+.no-items {
+  margin: 0;
+  padding: var(--pad-lrg) 0;
+  text-align: center;
+  line-height: 1;
+  color: var(--text);
+}
+
+.no-items svg {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: baseline;
 }
 
 .add-item {
-  border-bottom: 1px solid var(--lightgray);
+  border-top: 1px solid var(--lightgray);
 }
 
 .add-item,
 .todo-item {
-  display: block;
-  margin-bottom: var(--marg);
+  display: flex;
   padding: var(--pad) 0;
+}
+
+.add-item input[type="text"],
+.todo-item input[type="text"] {
+  flex: 1 0 auto;
+}
+
+.controls {
+  align-self: center;
 }
 
 .todo-item + .todo-item {
   border-top: 1px solid var(--lightgray);
 }
 
+
+.header {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--pad);
+  margin-bottom: var(--pad-lrg);
+}
+
+.date {
+  color: var(--text);
+}
+
+.date .day {
+  float: left;
+  font-size: 3.5rem;
+  vertical-align: top;
+  line-height: 2.5rem; 
+  margin-right: 5px;
+
+}
+
+.date .month,
+.date .year {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
 .stats {
   padding: var(--pad) 0 0;
   margin: var(--marg) 0 0;
   border-top: 1px solid var(--lightgray);
+}
+
+.footer {
+  color: var(--text);
+  font-size: 12px;
+  text-align: center;
+  padding: var(--pad) 0;
+}
+
+.footer svg {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  fill: var(--text);
+  vertical-align: middle;
 }

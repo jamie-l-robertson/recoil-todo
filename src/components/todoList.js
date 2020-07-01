@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { atom, useRecoilValue, selector, useSetRecoilState } from 'recoil';
-import TodoListFilters from './todoListFilter';
-import TodoListStats from './todoListStats';
-import TodoItem from './todoItem.js'
+import Header from './header';
+import TodoItem from './todoItem.js';
+import Footer from './footer';
+
+import { ReactComponent as CoffeeIcon } from '../icons/coffee-cup.svg';
+import { ReactComponent as AddIcon } from '../icons/circle-plus.svg';
 
 const todoListState = atom({
   key: 'todoListState',
@@ -58,15 +61,14 @@ function TodoList() {
 
   return (
     <>
-      <TodoListFilters />
-      <TodoItemCreator />
-
-      <h2>Items</h2>
-      {todoList.length > 0 ? todoList.map(todoItem => (
-        <TodoItem key={todoItem.id} item={todoItem} />
-      )) : <p>no items :(</p>}
-
-      <TodoListStats />
+      <div className="panel">
+        <Header />
+        {todoList.length > 0 ? todoList.map(todoItem => (
+          <TodoItem key={todoItem.id} item={todoItem} />
+        )) : <p className="no-items">No tasks, time for a coffee <CoffeeIcon /></p>}
+        <TodoItemCreator />
+      </div>
+      <Footer />
     </>
   )
 }
@@ -100,10 +102,11 @@ function TodoItemCreator() {
 
   return (
     <>
-      <h2>Add item</h2>
       <div className="add-item">
-        <input type="text" value={inputValue} onChange={onChange} />
-        <button onClick={addItem}>+</button>
+        <input type="text" placeholder="Add an item" value={inputValue} onChange={onChange} />
+        <button onClick={addItem}>
+          <AddIcon />
+        </button>
       </div>
     </>
   );

@@ -14,11 +14,11 @@ function TodoListStats() {
 
   return (
     <>
-      <h2>Statistics</h2>
+      <h2>Stats</h2>
       <ul className="stats">
-        <li>Total items: {totalNum}</li>
-        <li>Items completed: {totalCompletedNum}</li>
-        <li>Items not completed: {totalUncompletedNum}</li>
+        <li>Total Chores: {totalNum}</li>
+        <li>Chores completed: {totalCompletedNum}</li>
+        <li>Chores not completed: {totalUncompletedNum}</li>
         <li>Percent completed: {formattedPercentCompleted}%</li>
       </ul>
     </>

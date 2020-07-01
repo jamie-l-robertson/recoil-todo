@@ -16,7 +16,6 @@ function App() {
     <RecoilRoot initializeState={updateState}>
       <RecoilPersist />
       <div className="app">
-        <h1>Todo list</h1>
         <TodoList />
       </div>
     </RecoilRoot>

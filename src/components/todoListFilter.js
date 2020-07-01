@@ -2,6 +2,8 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { todoListFilterState } from './todoList';
 
+import { ReactComponent as FilterIcon } from '../icons/funnel.svg';
+
 function TodoListFilters() {
   const [filter, setFilter] = useRecoilState(todoListFilterState);
 
@@ -11,12 +13,12 @@ function TodoListFilters() {
 
   return (
     <div className="filter">
-      Filter: &nbsp;
       <select value={filter} onChange={updateFilter}>
         <option value="Show All">All</option>
         <option value="Show Completed">Completed</option>
         <option value="Show Uncompleted">Uncompleted</option>
       </select>
+      <FilterIcon />
     </div>
   );
 }
