@@ -60,16 +60,16 @@ function TodoList() {
   const todoList = useRecoilValue(filteredTodoListState);
 
   return (
-    <>
+    <main>
       <div className="panel">
         <Header />
         {todoList.length > 0 ? todoList.map(todoItem => (
           <TodoItem key={todoItem.id} item={todoItem} />
-        )) : <p className="no-items">No tasks, time for a coffee <CoffeeIcon /></p>}
+        )) : <p className="no-items">No tasks, time for a hot beverage <CoffeeIcon /></p>}
         <TodoItemCreator />
       </div>
       <Footer />
-    </>
+    </main>
   )
 }
 
@@ -103,8 +103,8 @@ function TodoItemCreator() {
   return (
     <>
       <div className="add-item">
-        <input type="text" placeholder="Add an item" value={inputValue} onChange={onChange} />
-        <button onClick={addItem}>
+        <input type="text" placeholder="Add an item" value={inputValue} onChange={onChange} aria-label="Enter task detail here" />
+        <button onClick={addItem} aria-label="Add the task">
           <AddIcon />
         </button>
       </div>

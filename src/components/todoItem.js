@@ -32,7 +32,7 @@ const TodoItem = ({ item }) => {
 
   return (
     <div className="todo-item">
-      <input type="text" value={item.text} style={{ textDecoration: item.isComplete && 'line-through' }} onChange={editItemText} />
+      <input type="text" value={item.text} style={{ textDecoration: item.isComplete && 'line-through' }} onChange={editItemText} aria-label="click to edit task" />
       <div className="controls">
         <input
           type="checkbox"

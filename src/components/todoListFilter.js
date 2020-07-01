@@ -13,7 +13,7 @@ function TodoListFilters() {
 
   return (
     <div className="filter">
-      <select value={filter} onChange={updateFilter}>
+      <select value={filter} onChange={updateFilter} aria-label="Filter tasks by completion state">
         <option value="Show All">All</option>
         <option value="Show Completed">Completed</option>
         <option value="Show Uncompleted">Uncompleted</option>

@@ -135,6 +135,10 @@ svg:not([class]) {
   padding: 0;
 }
 
+p {
+  color: var(--text);
+}
+
 .app {
   max-width: 600px;
   min-width: 340px;
