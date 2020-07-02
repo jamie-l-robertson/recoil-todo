@@ -2,9 +2,9 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/390a042d-d2e3-4a9a-a5d5-a7ae8558244c/deploy-status)](https://app.netlify.com/sites/nervous-ardinghelli-87c071/deploys)
 
-Simple Todo list using React, Recoil and persisting state via localStorage. 
+Simple Todo list using React and Recoil.
 
-[Demo](https://nervous-ardinghelli-87c071.netlify.app/).
+[Feel free to make use of it here](https://nervous-ardinghelli-87c071.netlify.app/).
 
 ### TODO
 
@@ -18,5 +18,6 @@ Simple Todo list using React, Recoil and persisting state via localStorage.
 
 ### Technologies
 
-- CRA
+- React
 - Recoil
+- localStorage for data persistence
